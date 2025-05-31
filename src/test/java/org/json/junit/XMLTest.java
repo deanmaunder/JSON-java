@@ -1419,7 +1419,7 @@ public class XMLTest {
         // and is probably a bug. JSONObject has a similar problem.
         String str2 = "<color> <color_type>primary</color_type> <value>008E97</value> </color>";
         JSONObject jsonObject2 = XML.toJSONObject(str2);
-        assertEquals(jsonObject2.getJSONObject("color").getLong("value"), 0e897, .1);
+        assertEquals(jsonObject2.getJSONObject("color").getString("value"), "008E97");
 
         // Workaround for now is to use keepStrings
         JSONObject jsonObject3 = XML.toJSONObject(str2, new XMLParserConfiguration().withKeepStrings(true));

@@ -522,6 +522,9 @@ public class XML {
      */
     private static Number stringToNumber(final String val) throws NumberFormatException {
         char initial = val.charAt(0);
+        if (val.indexOf('e') != -1 || val.indexOf('E') != -1) {
+            throw new NumberFormatException("Scientific notation not supported: [" + val + "]");
+        }
         if ((initial >= '0' && initial <= '9') || initial == '-') {
             // decimal representation
             if (isDecimalNotation(val)) {
